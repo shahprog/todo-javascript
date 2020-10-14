@@ -12,6 +12,7 @@
 	<div class="container">
 		<header class="text-center my-4 text-light">
 			<h1 class="mb-4">TODO List</h1>
+			<p class="subtitle"></p>
 			<form class="search">
 				<input type="text" class="form-control m-auto" name="search" placeholder="Search">
 			</form>
@@ -42,5 +43,13 @@
 	</div>
 
 	<script type="text/javascript" src="static/todo/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous"></script>
+	<script>
+		new Typed('.subtitle', {
+			strings: ["Create todo", "Delete todo", "Search todo"],
+			typeSpeed: 30,
+			smartBackspace: true
+		});
+	</script>
 </body>
 </html>
