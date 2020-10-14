@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ninja Quiz</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="static/todo/style.css">
+</head>
+<body>
+
+	<div class="container">
+		<header class="text-center my-4 text-light">
+			<h1 class="mb-4">TODO List</h1>
+			<form class="search">
+				<input type="text" class="form-control m-auto" name="search" placeholder="Search">
+			</form>
+		</header>
+		
+		<p class="text-warning filtered notodo"><i class="fas fa-exclamation-circle"></i> No todos found</p>
+		<ul class="todos list-group mx-auto text-light">
+			<li class="list-group-item d-flex justify-content-between aligh-items-center">
+				<span>Play Mariocart</span>
+				<i class="fa fa-trash-alt delete"></i>
+			</li>
+
+			<li class="list-group-item d-flex justify-content-between aligh-items-center">
+				<span>PUBG Mobile</span>
+				<i class="fa fa-trash-alt delete"></i>
+			</li>
+
+			<li class="list-group-item d-flex justify-content-between aligh-items-center">
+				<span>Call of duty</span>
+				<i class="fa fa-trash-alt delete"></i>
+			</li>
+		</ul>
+
+		<form action="" class="add text-center my-4">
+			<label for="add" class="text-light">Add new todo</label>
+			<input type="text" class="form-control m-auto" name="add">
+		</form>
+	</div>
+
+	<script type="text/javascript" src="static/todo/app.js"></script>
+</body>
+</html>
