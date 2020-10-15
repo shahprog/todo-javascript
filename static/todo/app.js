@@ -24,7 +24,6 @@ addTodoForm.addEventListener('submit', e => {
 	const todo = addTodoForm.todo.value.trim();
 	if(todo.length > 5){
 		addTodoForm.reset();
-		id = new Date().getTime();
 		firebase.database().ref(`todos/${firebase.auth().currentUser.uid}/`).push({
 			body : todo
 		}).then((data) => {
@@ -61,7 +60,6 @@ const getTodos = (path) => {
 firebase.auth().onAuthStateChanged((user) => {
     if (user) {
 		getTodos(`todos/${user.uid}/`).then((snap) => {
-			todoList.innerHTML = ""
 			let count = 0;
 			snap.forEach(row => {
 				updateTodos([row.key, row.val().body]);

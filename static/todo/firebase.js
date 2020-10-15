@@ -6,15 +6,19 @@ const mainApp = document.querySelector('.app');
 // On page refresh checking for logged in user
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-        document.querySelector('.sk-folding-cube').style.display = 'none'
-        mainApp.style.display = "initial"
-        loginForm.parentElement.style.display = "none"
+        setTimeout(() =>{
+            document.querySelector('.sk-folding-cube').style.display = 'none'
+            mainApp.style.display = "initial"
+            loginForm.parentElement.style.display = "none"
+        }, 2000)
     } else {
         setTimeout(() =>{
+            
             mainApp.style.display = "none"
             document.querySelector('.sk-folding-cube').style.display = 'none'
             loginForm.parentElement.style.display = "initial"
             document.querySelector('.login').style.display = 'initial'
+            document.querySelector('.todos').innerHTML = ""
         }, 2000)
     }
 });
@@ -28,7 +32,7 @@ const firebaseLogin = (email, password) => {
 
         swal({
             title: "Login Failed",
-            text: e.message,
+            text: errorMsg,
             icon: "warning",
             buttons: false,
             dangerMode: true,
@@ -47,7 +51,7 @@ loginForm.addEventListener('submit', (e) => {
 // Firebase logout
 logoutButton.addEventListener('click', () => {
     firebase.auth().signOut().then(() => {
-        // 
+        //
     }).catch(() => {
         //
     });
