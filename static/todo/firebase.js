@@ -6,11 +6,16 @@ const mainApp = document.querySelector('.app');
 // On page refresh checking for logged in user
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+        document.querySelector('.sk-folding-cube').style.display = 'none'
         mainApp.style.display = "initial"
         loginForm.parentElement.style.display = "none"
     } else {
-        mainApp.style.display = "none"
-        loginForm.parentElement.style.display = "initial"
+        setTimeout(() =>{
+            mainApp.style.display = "none"
+            document.querySelector('.sk-folding-cube').style.display = 'none'
+            loginForm.parentElement.style.display = "initial"
+            document.querySelector('.login').style.display = 'initial'
+        }, 2000)
     }
 });
 
@@ -65,8 +70,8 @@ const firebaseRegister = (email, password) => {
 
 regForm.addEventListener('submit', e => {
     e.preventDefault();
-    const email = regForm.email.value;
-    const password = regForm.password.value;
+    const email = regForm.remail.value;
+    const password = regForm.rpassword.value;
 
     firebaseRegister(email, password);
 });

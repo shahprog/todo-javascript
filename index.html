@@ -8,9 +8,14 @@
 	<link rel="stylesheet" type="text/css" href="static/todo/style.css">
 </head>
 <body>
-
+	<div class="sk-folding-cube">
+		<div class="sk-cube1 sk-cube"></div>
+		<div class="sk-cube2 sk-cube"></div>
+		<div class="sk-cube4 sk-cube"></div>
+		<div class="sk-cube3 sk-cube"></div>
+	  </div>
 	<div class="container">
-
+		
 		<div class="login my-4 text-light">
 			<h1 class="mb-4 text-center my-4">Login</h1>
 			<form action="" class="login-form my-4" method="post">
@@ -21,8 +26,8 @@
 
 			<h1 class="mb-4 text-center my-4">Register</h1>
 			<form action="" class="register-form my-4" method="post">
-				<input type="email" class="form-control m-auto" name="email" placeholder="example@example.com"><br>
-				<input type="password" class="form-control m-auto" name="password" placeholder="********">
+				<input type="email" class="form-control m-auto" name="remail" placeholder="example@example.com"><br>
+				<input type="password" class="form-control m-auto" name="rpassword" placeholder="********">
 				
 				<input type="submit" value="Register" class="btn btn-primary text-light mt-3">
 			</form>
@@ -31,12 +36,12 @@
 		<div class="app">
 			<header class="text-center my-4 text-light">
 				<h1 class="mb-4">TODO List <span><button class="btn btn-sm btn-dark logout">Logout</button></span></h1>
-				<!-- <p class="subtitle"></p> -->
+				
 				<form class="search">
 					<input type="text" class="form-control m-auto" name="search" placeholder="Search">
 				</form>
 			</header>
-			
+			<p class="subtitle text-light loading">Loading</p>
 			<p class="text-warning filtered notodo"><i class="fas fa-exclamation-circle"></i> No todos found</p>
 
 			<ul class="todos list-group mx-auto text-light">

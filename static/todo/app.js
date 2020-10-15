@@ -3,7 +3,7 @@ const todoList = document.querySelector('.todos');
 const searchForm = document.querySelector('.search');
 const search = document.querySelector('.search input');
 
-const getTodos = (data) => {
+const updateTodos = (data) => {
 	return new Promise((resolve, reject) => {
 		const html = `
 		<li class="list-group-item d-flex justify-content-between aligh-items-center" id=${data[0]}>
@@ -28,7 +28,7 @@ addTodoForm.addEventListener('submit', e => {
 		firebase.database().ref(`todos/${firebase.auth().currentUser.uid}/`).push({
 			body : todo
 		}).then((data) => {
-			getTodos([data.key, todo])
+			updateTodos([data.key, todo])
 			document.querySelector('.notodo').classList.add('filtered');
 		}).catch((error) => {
 			swal({
@@ -50,13 +50,21 @@ addTodoForm.addEventListener('submit', e => {
 	}
 });
 
-firebase.auth().onAuthStateChanged(function(user) {
+const getTodos = (path) => {
+	return new Promise((resolve, reject) => {
+		firebase.database().ref(path).once('value', (snap) =>{
+			resolve(snap);
+		});
+	});
+};
+
+firebase.auth().onAuthStateChanged((user) => {
     if (user) {
-        firebase.database().ref(`todos/${user.uid}/`).once('value', (snap) =>{
+		getTodos(`todos/${user.uid}/`).then((snap) => {
+			todoList.innerHTML = ""
 			let count = 0;
 			snap.forEach(row => {
-				// console.log(row.val())
-				getTodos([row.key, row.val().body]);
+				updateTodos([row.key, row.val().body]);
 				count += 1;
 				
 			});
@@ -66,7 +74,10 @@ firebase.auth().onAuthStateChanged(function(user) {
 			}else{
 				console.log(count)
 			}
-			console.log('Here')
+
+			document.querySelector('.loading').style.display = 'none'
+		}).catch((error) => {
+			//
 		});
     } else {
 		// pass
@@ -78,7 +89,7 @@ todoList.addEventListener('click', e => {
 		const parent = e.target.parentElement
 		const key = parent.getAttribute('id');
 		firebase.database().ref(`todos/${firebase.auth().currentUser.uid}/${key}/`).remove().catch(e => {
-			console.log('error')
+			console.log(e)
 		});
 
 		parent.remove();
