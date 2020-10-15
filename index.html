@@ -10,46 +10,72 @@
 <body>
 
 	<div class="container">
-		<header class="text-center my-4 text-light">
-			<h1 class="mb-4">TODO List</h1>
-			<p class="subtitle"></p>
-			<form class="search">
-				<input type="text" class="form-control m-auto" name="search" placeholder="Search">
+
+		<div class="login my-4 text-light">
+			<h1 class="mb-4 text-center my-4">Login</h1>
+			<form action="" class="login-form my-4" method="post">
+				<input type="email" class="form-control m-auto" name="email" placeholder="example@example.com"><br>
+				<input type="password" class="form-control m-auto" name="password" placeholder="********">
+				<input type="submit" value="Login" class="btn btn-success text-light mt-3">
 			</form>
-		</header>
-		
-		<p class="text-warning filtered notodo"><i class="fas fa-exclamation-circle"></i> No todos found</p>
-		<ul class="todos list-group mx-auto text-light">
-			<li class="list-group-item d-flex justify-content-between aligh-items-center">
-				<span>Play Mariocart</span>
-				<i class="fa fa-trash-alt delete"></i>
-			</li>
 
-			<li class="list-group-item d-flex justify-content-between aligh-items-center">
-				<span>PUBG Mobile</span>
-				<i class="fa fa-trash-alt delete"></i>
-			</li>
+			<h1 class="mb-4 text-center my-4">Register</h1>
+			<form action="" class="register-form my-4" method="post">
+				<input type="email" class="form-control m-auto" name="email" placeholder="example@example.com"><br>
+				<input type="password" class="form-control m-auto" name="password" placeholder="********">
+				
+				<input type="submit" value="Register" class="btn btn-primary text-light mt-3">
+			</form>
+			
+		</div>
+		<div class="app">
+			<header class="text-center my-4 text-light">
+				<h1 class="mb-4">TODO List <span><button class="btn btn-sm btn-dark logout">Logout</button></span></h1>
+				<!-- <p class="subtitle"></p> -->
+				<form class="search">
+					<input type="text" class="form-control m-auto" name="search" placeholder="Search">
+				</form>
+			</header>
+			
+			<p class="text-warning filtered notodo"><i class="fas fa-exclamation-circle"></i> No todos found</p>
 
-			<li class="list-group-item d-flex justify-content-between aligh-items-center">
-				<span>Call of duty</span>
-				<i class="fa fa-trash-alt delete"></i>
-			</li>
-		</ul>
+			<ul class="todos list-group mx-auto text-light">
+				
+			</ul>
 
-		<form action="" class="add text-center my-4">
-			<label for="add" class="text-light">Add new todo</label>
-			<input type="text" class="form-control m-auto" name="add">
-		</form>
+			<form action="" class="add text-center my-4">
+				<label for="add" class="text-light">Add new todo</label>
+				<input type="text" class="form-control m-auto" name="todo">
+			</form>
+		</div>
 	</div>
 
-	<script type="text/javascript" src="static/todo/app.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.5/typed.min.js" integrity="sha512-1KbKusm/hAtkX5FScVR5G36wodIMnVd/aP04af06iyQTkD17szAMGNmxfNH+tEuFp3Og/P5G32L1qEC47CZbUQ==" crossorigin="anonymous"></script>
+	<!-- Firebase  -->
+	<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 	<script>
-		new Typed('.subtitle', {
-			strings: ["Create todo", "Delete todo", "Search todo"],
-			typeSpeed: 30,
-			smartBackspace: true
-		});
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+	var firebaseConfig = {
+		apiKey: "AIzaSyDdYr1P4hKGMDWN7ujzr0iIDKm12K7f65g",
+		authDomain: "todo-js-d980a.firebaseapp.com",
+		databaseURL: "https://todo-js-d980a.firebaseio.com",
+		projectId: "todo-js-d980a",
+		storageBucket: "todo-js-d980a.appspot.com",
+		messagingSenderId: "648350261319",
+		appId: "1:648350261319:web:a5bbeb756a5a92ef825162",
+		measurementId: "G-70TD6LD1XC"
+	};
+	// Initialize Firebase
+	firebase.initializeApp(firebaseConfig);
 	</script>
+
+	<!-- Project scripts -->
+	<script type="text/javascript" src="static/todo/firebase.js"></script>
+	<script type="text/javascript" src="static/todo/app.js"></script>
+	
 </body>
 </html>

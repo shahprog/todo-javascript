@@ -6,7 +6,13 @@ body {
     max-width: 400px;
 }
 
+.app {
+    display: none;
+}
+
 input[type=text],
+input[type=email],
+input[type=password],
 input[type=text]:focus {
     color: #fff;
     border: none;
@@ -24,8 +30,4 @@ input[type=text]:focus {
 
 .filtered {
     display: none !important;
-}
-
-.typed-cursor {
-    display: none;
 }
