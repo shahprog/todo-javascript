@@ -34,9 +34,10 @@ const updateTodos = (data) => {
 
 const typeIt = (msg) => {
 	const typed = new Typed('.typed', {
-		strings: [msg]
+		strings: [msg],
+		typeSpeed: 20,
 	});
-	
+
 	document.querySelector('.typed').classList.remove('typed');
 }
 
