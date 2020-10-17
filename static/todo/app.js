@@ -3,7 +3,7 @@ const todoList = document.querySelector('.todos');
 const searchForm = document.querySelector('.search');
 const search = document.querySelector('.search input');
 
-const updateTodos = (data) => {
+const getFirstTodos = (data) => {
 	return new Promise((resolve, reject) => {
 		const html = `
 		<li class="list-group-item d-flex justify-content-between aligh-items-center" id=${data[0]}>
@@ -15,8 +15,29 @@ const updateTodos = (data) => {
 		todoList.innerHTML += html
 		// console.log(todoList.children)
 	})
+}
 
+const updateTodos = (data) => {
+	return new Promise((resolve, reject) => {
+		const html = `
+		<li class="list-group-item d-flex justify-content-between aligh-items-center" id=${data[0]}>
+			<span class='typed'></span>
+			<i class="fa fa-trash-alt delete"></i>
+		</li>
+		`
+
+		todoList.innerHTML += html
+		typeIt(data[1]);
+		// console.log(todoList.children)
+	})
+}
+
+const typeIt = (msg) => {
+	const typed = new Typed('.typed', {
+		strings: [msg]
+	});
 	
+	document.querySelector('.typed').classList.remove('typed');
 }
 
 addTodoForm.addEventListener('submit', e => {
@@ -62,7 +83,7 @@ firebase.auth().onAuthStateChanged((user) => {
 		getTodos(`todos/${user.uid}/`).then((snap) => {
 			let count = 0;
 			snap.forEach(row => {
-				updateTodos([row.key, row.val().body]);
+				getFirstTodos([row.key, row.val().body]);
 				count += 1;
 				
 			});

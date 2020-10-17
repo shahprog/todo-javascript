@@ -6,6 +6,10 @@ body {
     max-width: 400px;
 }
 
+.typed-cursor {
+  display: none;
+}
+
 .app {
     display: none;
 }
