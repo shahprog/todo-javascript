@@ -104,7 +104,11 @@ firebase.auth().onAuthStateChanged((user) => {
     }
 });
 
-todoList.addEventListener('click', e => {
+const sleep = (ms) => {
+	return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+todoList.addEventListener('click', async (e) => {
 	if(e.target.tagName === 'I'){
 		const parent = e.target.parentElement
 		const key = parent.getAttribute('id');
@@ -112,7 +116,16 @@ todoList.addEventListener('click', e => {
 			console.log(e)
 		});
 
+		content = parent.textContent
+		for(i = content.length-1 ; i >= 0; i--){
+			parent.textContent = content.slice(0, i);
+			if(i !== content.length -1){
+				await new Promise(r => setTimeout(r, 20));
+			}
+		}
+
 		parent.remove();
+
 		if(Array.from(todoList.children).length <= 0){
 			document.querySelector('.notodo').classList.remove('filtered');
 		}
