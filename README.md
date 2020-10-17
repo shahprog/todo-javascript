@@ -1,3 +1,3 @@
 # TODO
 A simple javascript todo web app
-Example at - https://shahprog.github.io/todo-javascript/
+Example at - https://todo.is-virg.in/
